@@ -25,9 +25,89 @@
 
         <div class="hero-content">
           <!-- Avatar -->
-          <div class="avatar-wrapper">
-            <div class="avatar">FF</div>
-          </div>
+          <svg style="width: 200px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for main shape -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d946ef;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for glow -->
+    <radialGradient id="glowGradient">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Filter for shadow -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Glow background -->
+  <circle cx="100" cy="100" r="80" fill="url(#glowGradient)" opacity="0.5">
+    <animate attributeName="r" values="70;85;70" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Outer hexagon -->
+  <path d="M 100 20 L 155 50 L 155 110 L 100 140 L 45 110 L 45 50 Z" 
+        fill="none" 
+        stroke="url(#mainGradient)" 
+        stroke-width="3"
+        opacity="0.6">
+    <animate attributeName="stroke-dasharray" 
+             values="0,400;400,400;400,0" 
+             dur="4s" 
+             repeatCount="indefinite"/>
+  </path>
+
+  <!-- Main circle with gradient -->
+  <circle cx="100" cy="100" r="55" fill="url(#mainGradient)" filter="url(#shadow)"/>
+  
+  <!-- Inner decorative ring -->
+  <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  
+  <!-- Letter F - stylized -->
+  <g transform="translate(70, 70)">
+    <!-- F shape -->
+    <path d="M 8 0 L 35 0 L 35 8 L 18 8 L 18 22 L 32 22 L 32 30 L 18 30 L 18 50 L 8 50 Z" 
+          fill="white"
+          opacity="0.95">
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- F accent line -->
+    <rect x="8" y="0" width="27" height="3" fill="white" opacity="0.4">
+      <animate attributeName="width" values="27;30;27" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Decorative code brackets -->
+  <text x="25" y="110" font-family="monospace" font-size="40" fill="rgba(255,255,255,0.15)" font-weight="bold">&lt;</text>
+  <text x="155" y="110" font-family="monospace" font-size="40" fill="rgba(255,255,255,0.15)" font-weight="bold">/&gt;</text>
+
+  <!-- Rotating dots -->
+  <g>
+    <circle cx="100" cy="35" r="3" fill="#d946ef">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="165" cy="100" r="3" fill="#6366f1">
+      <animateTransform attributeName="transform" type="rotate" from="120 100 100" to="480 100 100" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="165" r="3" fill="#8b5cf6">
+      <animateTransform attributeName="transform" type="rotate" from="240 100 100" to="600 100 100" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Pulse ring effect -->
+  <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2">
+    <animate attributeName="r" values="55;65;55" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
 
           <h1 class="main-title">Foziljon Faxriddinov</h1>
           <p :style="subtitleStyles" class="subtitle">Fullstack Developer</p>
